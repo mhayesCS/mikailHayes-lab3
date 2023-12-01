@@ -35,9 +35,13 @@ int** read_board_from_file(char* filename){
 int is_board_valid(){
     pthread_t* tid;  /* the thread identifiers */
     pthread_attr_t attr;
-    param_struct* parameter;
+    tid = (pthread_t*) malloc(sizeof(int*) * NUM_OF_THREADS);
+    param_struct* parameter = (param_struct*) malloc(sizeof(param_struct)* NUM_OF_THREADS);
+    int index = 0;
+
     
-    // replace this comment with your code
+    
+    
     
 }
 
@@ -52,4 +56,9 @@ int board_piece(int* row){
         }
     }
     return 1;
+}
+
+int __unnamed_struct_0a48_1::is_board_valid()
+{
+    return 0;
 }
