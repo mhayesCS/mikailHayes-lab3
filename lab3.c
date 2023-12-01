@@ -7,28 +7,24 @@ extern int** sudoku_board;
 int* worker_validation;
 
 int** read_board_from_file(char* filename){
-    FILE *fp = fopen(filename, "r");
-    int** board = NULL;
+    FILE *fp = NULL;
+    sudoku_board = (int**)malloc(sizeof(int*)*ROW_SIZE);
+    for(int row = 0; row < ROW_SIZE; row++)
+	    sudoku_board[row] = (int*)malloc(sizeof(int)*COL_SIZE);
+    fp = fopen(filename, "r");
+    for(int i = 0; i < ROW_SIZE; i++)
+        for(int j = 0; j < COL_SIZE; j++) 
+            fscanf(fp, "%d%*c", &sudoku_board[i][j]);
 
-    // replace this comment with your code
-    board = (int**)malloc(9*sizeof(int*));
-    for (int col = 0; col < 9; col++)
-    {
-        board[col] = (int*)malloc(9*sizeof(int));
-    }
-    if(fp == NULL) return;
 
-    int row = 0;
-    while(row < 9){
-        int col = 0;
-        while(col < 9){
-            fscanf(fp,"%d",&board[row][col]);
-            col++;
-        }
-        row++;
+    for(int i = 0; i<ROW_SIZE; i++){
+        for(int j = 0; j<COL_SIZE; j++) printf("%d ", sudoku_board[i][j]);
+        printf("\n");
     }
+
     fclose(fp);
-    return board;
+    return sudoku_board;
+
 }
 
 
