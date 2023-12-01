@@ -102,9 +102,9 @@ int is_board_valid(){
         pthread_join(tid[i], NULL);
     
     for (int x = 0; x< NUM_OF_THREADS; x++)
-        if(validation[x] != 1)return 0;
+        if(worker_validation[x] != 1)return 0;
 
-    free(validation);
+    free(worker_validation);
     free(tid);
     return 1;
 }
@@ -115,22 +115,6 @@ int is_board_valid(){
     
     
     
-}
 
-int board_piece(int* row){
-    int* checker[] ={0, 0,0,0,0,0,0,0,0}; 
-    for (int value =0; value < 9; value++){
-        checker[row[value]-1] = 1;
-    }
-    for (int value =0; value < 9; value++){
-        if(checker[value] == 0){
-            return 0;
-        }
-    }
-    return 1;
-}
 
-int __unnamed_struct_0a48_1::is_board_valid()
-{
-    return 0;
-}
+
